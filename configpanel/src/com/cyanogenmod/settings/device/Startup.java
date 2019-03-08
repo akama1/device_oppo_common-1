@@ -158,12 +158,12 @@ public class Startup extends BroadcastReceiver {
             pendingIntent = PendingIntent.getBroadcastAsUser(
                     context, 0, doubleTapIntent, 0, UserHandle.CURRENT);
         }
-        try {
-            System.out.println("toggleDoubleTap : " + pendingIntent);
-            gestureService.setOnDoubleClickPendingIntent(pendingIntent);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        //try {
+        //    System.out.println("toggleDoubleTap : " + pendingIntent);
+        //    gestureService.setOnDoubleClickPendingIntent(pendingIntent);
+        //} catch (RemoteException e) {
+        //    e.printStackTrace();
+        //}
     }
 
     public static void toggleLongPress(Context context, IGestureService gestureService,
@@ -174,12 +174,12 @@ public class Startup extends BroadcastReceiver {
             pendingIntent = PendingIntent.getBroadcastAsUser(
                     context, 0, longPressIntent, 0, UserHandle.CURRENT);
         }
-        try {
-            System.out.println("toggleLongPress : " + pendingIntent);
-            gestureService.setOnLongPressPendingIntent(pendingIntent);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        //try {
+         //   System.out.println("toggleLongPress : " + pendingIntent);
+         //   gestureService.setOnLongPressPendingIntent(pendingIntent);
+        //} catch (RemoteException e) {
+         //   e.printStackTrace();
+        //}
     }
 
     private void sendInputEvent(InputEvent event) {
