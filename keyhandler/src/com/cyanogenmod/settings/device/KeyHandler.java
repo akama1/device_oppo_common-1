@@ -130,10 +130,10 @@ public class KeyHandler implements DeviceKeyHandler {
                 "GestureWakeLock");
 
         final Resources resources = mContext.getResources();
-        mProximityTimeOut = resources.getInteger(
-                com.android.internal.R.integer.config_proximityCheckTimeout);
-        mProximityWakeSupported = resources.getBoolean(
-                com.android.internal.R.bool.config_proximityCheckOnWake);
+        //mProximityTimeOut = resources.getInteger(
+        //        com.android.internal.R.integer.config_proximityCheckTimeout);
+        //mProximityWakeSupported = resources.getBoolean(
+        //        com.android.internal.R.bool.config_proximityCheckOnWake);
 
         if (mProximityWakeSupported) {
             mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -283,11 +283,11 @@ public class KeyHandler implements DeviceKeyHandler {
             }
         } else if (!mEventHandler.hasMessages(GESTURE_REQUEST)) {
             Message msg = getMessageForKeyEvent(scanCode);
-            boolean defaultProximity = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
-            boolean proximityWakeCheckEnabled = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.PROXIMITY_ON_WAKE, defaultProximity ? 1 : 0) == 1;
-            if (mProximityWakeSupported && proximityWakeCheckEnabled && mProximitySensor != null) {
+            //boolean defaultProximity = mContext.getResources().getBoolean(
+            //    com.android.internal.R.bool.config_proximityCheckOnWakeEnabledByDefault);
+            //boolean proximityWakeCheckEnabled = Settings.System.getInt(mContext.getContentResolver(),
+            //        Settings.System.PROXIMITY_ON_WAKE, defaultProximity ? 1 : 0) == 1;
+            if (scanCode < MODE_TOTAL_SILENCE && mProximitySensor != null) {
                 mEventHandler.sendMessageDelayed(msg, mProximityTimeOut);
                 processEvent(scanCode);
             } else {
